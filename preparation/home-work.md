@@ -87,3 +87,33 @@ sudo chown xiang:xiang a.sh
   3. 最近几年的SLAM百花齐放的出现了很多新的思路，多机联合SLAM，基于机器学习的SLAM，给予语义分析的SLAM等。
   
 4. 列举三篇在 SLAM 领域的经典文献。
+
+
+# 5 理解 ORB-SLAM2 框架 (3 分,约 2 小时)
+1. ![下载ORB_SLAM2后的截图](downloaded_orb_slam2.png)
+2. 阅读 ORB-SLAM2 代码目录下的 CMakeLists.txt,回答问题:
+
+  - （a）ORB-SLAM2 将编译出什么结果?有几个库文件和可执行文件?
+    - 动态库：libORB_SLAM2.so 
+    - 可执行：rgbd_tum 
+    - 可执行：stereo_kitti 
+    - 可执行：stereo_euroc 
+    - 可执行：mono_tum 
+    - 可执行：mono_kitti 
+    - 可执行：mono_euroc
+  - （b）ORB-SLAM2 中的 include, src, Examples 三个文件夹中都含有什么内容?
+    - include 包含所有的头文件定义，头文件中定义了很多算法需要的数据结构和承载算法逻辑的类。
+    - src 包含了所有的逻辑实现文件，简称C++源文件，上题目中的每个编译产物对应该文件夹下的一个或多个源文件。
+    - Examples 包含了利用ORB_SLAM算法库实现的几种使用不同传感器输入源的SLAM:
+      1. 单目：Monocular 使用了三种数据集来测试结果（KITTI,EuRoC,TUM）
+      2. 双目:Stereo 使用了两种数据集来测试结果（KITTI,EuRoC）
+      3. 深度摄像头:RGBD 使用了一种数据源来测试结果（TUM）
+
+      还有个ROS目录使用了ROS兼容的数据接收方式（Topic）来实现了上述三种程序
+  - （c）ORB-SLAM2 中的可执行文件链接到了哪些库?它们的名字是什么?
+    - OpenCV 视觉处理库
+    - EIGEN3 矩阵处理库
+    - Pangolin 可视化工具库
+    - ros 编译Example中的ROS目录下的程序时用到的ROS框架的依赖
+
+# 6 使用摄像头或视频运行 ORB-SLAM2(3 分,约 1 小时)
