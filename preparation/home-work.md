@@ -88,6 +88,10 @@ sudo chown xiang:xiang a.sh
   
 4. 列举三篇在 SLAM 领域的经典文献。
 
+# 4 CMake 练习 (2 分,约 1.5 小时)
+
+CMakeLists.txt can be found under code/ folder
+
 
 # 5 理解 ORB-SLAM2 框架 (3 分,约 2 小时)
 1. ![下载ORB_SLAM2后的截图](downloaded_orb_slam2.png)
