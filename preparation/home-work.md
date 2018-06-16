@@ -121,3 +121,22 @@ CMakeLists.txt can be found under code/ folder
     - ros 编译Example中的ROS目录下的程序时用到的ROS框架的依赖
 
 # 6 使用摄像头或视频运行 ORB-SLAM2(3 分,约 1 小时)
+1. 至此,你应该可以顺利编译 ORB-SLAM2 了,请给出它编译完成的截图。
+![After compiling ORB_SLAM2后的截图](compile-orb-slam.png)
+2. 那么请问,如何将 myslam.cpp或 myvideo.cpp 加入到 ORB-SLAM2 工程中?请给出你的 CMakeLists.txt 修改方案。
+  ![Add myslam.cpp into ORB_SLAM2后的截图](compile-myslam.png)
+
+copy myslam.cpp and myslam.yaml into the folder: Examples/Myslam/
+and make a soft-link of Vocabulary/ORBvoc.txt under the folder: Examples/Myslam/Vocabulary/ORBvoc.txt by command:
+```
+cd Examples/Myslam/Vocabulary/
+
+ln -s ~/ORB_SLAM2/Vocabulary/ORBvoc.txt Orbvoc.txt
+```
+so that myslam.cpp can find config file and vocabulary file.
+
+3. 请给出运行截图,并谈谈你在运行过程中的体会。
+  ![Run myslam 后的截图](run-myslam.png)
+
+I felt the system is not very stable, if I move my dell-xps-15 too fast, it will lost position and told me to re-localize, especially when light is not very enough and features of image are not enough. Seems like this 
+example is highly depends on image feature, if the image has a lot different colors and different borders the result is quiet good.
