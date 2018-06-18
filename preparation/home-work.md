@@ -90,7 +90,7 @@ sudo chown xiang:xiang a.sh
 
 # 4 CMake 练习 (2 分,约 1.5 小时)
 
-CMakeLists.txt can be found under code/ folder
+CMakeLists.txt 已经放到文件夹：code/ 下
 
 
 # 5 理解 ORB-SLAM2 框架 (3 分,约 2 小时)
@@ -126,17 +126,17 @@ CMakeLists.txt can be found under code/ folder
 2. 那么请问,如何将 myslam.cpp或 myvideo.cpp 加入到 ORB-SLAM2 工程中?请给出你的 CMakeLists.txt 修改方案。
   ![Add myslam.cpp into ORB_SLAM2后的截图](compile-myslam.png)
 
-copy myslam.cpp and myslam.yaml into the folder: Examples/Myslam/
-and make a soft-link of Vocabulary/ORBvoc.txt under the folder: Examples/Myslam/Vocabulary/ORBvoc.txt by command:
+讲 myslam.cpp 和 myslam.yaml 拷贝到文件夹: Examples/Myslam/
+然后做一个软连接 Vocabulary/ORBvoc.txt 放到此路径: Examples/Myslam/Vocabulary/ORBvoc.txt 下， 命令如下:
 ```
 cd Examples/Myslam/Vocabulary/
 
 ln -s ~/ORB_SLAM2/Vocabulary/ORBvoc.txt Orbvoc.txt
 ```
-so that myslam.cpp can find config file and vocabulary file.
+这样myslam.cpp就可以正确的加载vocabulary文件了.
 
 3. 请给出运行截图,并谈谈你在运行过程中的体会。
   ![Run myslam 后的截图](run-myslam.png)
 
-I felt the system is not very stable, if I move my dell-xps-15 too fast, it will lost position and told me to re-localize, especially when light is not very enough and features of image are not enough. Seems like this 
-example is highly depends on image feature, if the image has a lot different colors and different borders the result is quiet good.
+
+我觉得这个系统不是很稳定，如果我移动我的Del-XPS-15太快，它将失去位置，并告诉我重新定位，特别是当光不够，图像的特点是不够的时候。似乎是这样，系统高度依赖于图像特征，如果图像有很多不同的颜色和不同的边界，结果还不错。 
