@@ -235,9 +235,53 @@ int main(int argc, char const *argv[])
     $\therefore q_1 q_2 = q_1 ^ + q_2 = q_2^\oplus q_1$
 
 # 5 罗德里格斯公式的证明 (2 分,约 1 小时)
-TODO
+
+Proposition: every rotation transform $({\theta}, n)$ could be represented as $\exp(\theta \cdot n^{\lambda})$
+
+Proof: $\forall P(t) \in R^3$, after transformed by Rotation transform with direction $n$ and angle speed $w$, it's line speed satisfy:
+$V(t) = w \cdot n^{\lambda} \cdot P(t)$ so $\frac{d(P)} {d(t)} = w \cdot n^{\lambda} \cdot P$
+$\therefore P(t) = \exp(w \cdot t \cdot n^{\lambda}), \exp(w \cdot t \cdot n^{\lambda}) = I + (w \cdot t) \cdot n^{\lambda} + \frac{1}{2!} \cdot (w\cdot t)^{2} \cdot (n^{\lambda})^{2} + ...$
+$= \sum_{m=0}^{+\infin} \frac{1}{m!}(w \cdot t)^{m} \cdot (n^{\lambda})^{m}$
+$\therefore$ take $t = 1$ under effects of the rotation transform with direction n and stable angle speed w, rotation transform matrix is:
+$R=\exp(w \cdot t \cdot n^{\lambda})$
+then take $w \cdot 1 = \theta$ we have $R = \exp(\theta \cdot n^{\lambda})$
+
+关键结论：罗德里格斯公式提供了Rotation Vector/ Angle Axis 到 Rotation Matrix的转换方法：
+n为轴, $\theta$为绕该轴旋转的角度，n为单位向量，长度为1
+
+$R = \cos(\theta) \cdot I + (1-\cos(\theta))\cdot n \cdot n^{T} + \sin(\theta)\cdot n^{\land}$
+这里$n^{\land}$ 为 n的叉积
+
+$\theta = \arccos(\frac{tr(R) -1}{2})$
+这里tr(R)为矩阵的trace即对角线的和
+$n = R\cdot n$
+这里n可以理解为特征值为1的R的特征向量
+
+
+
 # 6 四元数运算性质的验证 (1 分,约 1 小时)
-TODO
+Proposition: using quaternion to rotate point p could be represented as:
+$q\cdot p \cdot q^{-1} = q^{+}q^{-} \oplus p$
+Proof:
+$q\cdot p \cdot q^{-1} = q^{+}q^{-} \oplus p$
+$编不下去了...$
+
+关键结论：
+quaternion相比Angle Axis和Rotation Vector而言再表达上没有奇异。
+相对Rotation Matrix而言更紧凑。
+同样也有angle axis到quaternion的转换公式:
+$q = [\cos(\frac{\theta}{2}), n_x\cdot \sin(\frac{\theta}{2}), n_y\cdot \sin(\frac{\theta}{2}), n_z \cdot \sin(\frac{\theta}{2})]$
+quaternion到angle axis的转换公式:
+$\theta = 2 \cdot \arccos(q_0)$
+$[n_x, n_y, n_z]^{T} = \frac{[q_1, q_2, q_3]^{T}}{\sin(\frac{\theta}{2})}$
+
+使用quaternion旋转点p:
+首先需要讲p写为齐次式（也可以说写成四元数的形式）：$p = [0, x, y, z] = [0, v]$ v 是quaternion的虚部
+
+$p^{\prime} = q\cdot p \cdot q^{-1}$
+
+$p^{\prime} = [0, x^{\prime}, y^{\prime}, z^{\prime}]$
+
 # 7 * 熟悉 C++11 (2 分,约 1 小时)
 ```
 vector<A> avec{a1, a2, a3}; // 初始化列表
